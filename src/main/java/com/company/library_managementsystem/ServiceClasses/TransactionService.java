@@ -121,7 +121,7 @@ public class TransactionService {
         LibraryCard card=cardRepository.findById(cardId).get();
         
         
-        List<Transaction> transactionList=transactionRepository.findTransactionsByBookAndLibraryCardAndTransactonStatusAndTransactionType(book, card, TransactionStatus.SUCCESS, TransactionType.ISSUE);
+        List<Transaction> transactionList=transactionRepository.findTransactionsByBookAndLibraryCardAndTransactonStatusAndTransactionType(bookId, cardId, TransactionStatus.SUCCESS, TransactionType.ISSUE);
         
         Transaction latestTransaction=transactionList.get(transactionList.size()-1);
         
