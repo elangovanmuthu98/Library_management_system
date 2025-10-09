@@ -19,7 +19,10 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction,Integer>{
+
+
+    @Query(nativeQuery = true,value = "SELECT * from transaction WHERE book_book_id LIKE %:b% AND library_card_card_no LIKE %:c% AND transaction_status LIKE %:ts% AND transaction_type LIKE %:tt%")
+    List<Transaction> findTransactionsByBookAndLibraryCardAndTransactonStatusAndTransactionType(Integer b,Integer c,TransactionStatus ts, TransactionType tt);
     
-    List<Transaction> findTransactionsByBookAndLibraryCardAndTransactonStatusAndTransactionType(Book book,LibraryCard card,TransactionStatus transactionStatus, TransactionType transactionType);
     
 }
